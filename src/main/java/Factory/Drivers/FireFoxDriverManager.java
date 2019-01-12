@@ -1,10 +1,10 @@
-package Factory;
+package Factory.Drivers;
 
-import Factory.DriverFactory;
+import Factory.Drivers.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class FireFoxDriverFactory implements DriverFactory {
+public class FireFoxDriverManager implements DriverManager {
 
     WebDriver driver;
     private String driverPath = "C:\\Users\\oades\\proj\\BjssAutomation\\drivers";

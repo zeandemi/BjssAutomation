@@ -1,8 +1,8 @@
-package Factory;
+package Factory.Drivers;
 
 import org.openqa.selenium.WebDriver;
 
-public interface DriverFactory {
+public interface DriverManager {
 
     WebDriver getDriver();
     void setDriver();

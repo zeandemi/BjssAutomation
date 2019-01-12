@@ -1,12 +1,12 @@
-package Factory;
+package Factory.Drivers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ChromeDriverFactory implements DriverFactory {
+public class ChromeDriverManager implements DriverManager {
 
     WebDriver driver;
-    private String driverPath = "C:\\Users\\oades\\proj\\BjssAutomation\\drivers";
+    private String driverPath = "C:\\Users\\oades\\proj\\BjssAutomation\\drivers\\";
 
     public WebDriver getDriver() {
         return driver;
