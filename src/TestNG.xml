@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="Regression">
+    <test name="Happy-Path">
         <parameter name="appType" value="Chrome"/>
+        <parameter name="username" value="abc123@yahoo.com"/>
+        <parameter name="password" value="BJSSTest"/>
         <packages>
             <package name="PageTests"/>
         </packages>
+        <classes>
+            <class name="PageTests.HomePageTest">
+                <methods>
+                    <include name="purchase2Items"/>
+                </methods>
+            </class>
+        </classes>
     </test>
 
 </suite>
