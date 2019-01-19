@@ -11,12 +11,16 @@ public class HomePageTest extends BaseTest {
     WebDriver driver;
 
     @Test
-    @Parameters({"username","password"})
-    public void purchase2Items(String username, String password) throws InterruptedException {
+    @Parameters({"username","password","size"})
+    public void purchase2Items(String username, String password,String size) throws InterruptedException {
         driver = getDriver();
         homePage = new HomePage(driver);
-        homePage.logIn(username,password).clickOnQuickView();
         Assert.assertEquals(driver.getTitle(),"My Store");
+        homePage.logIn(username,password).clickOnBlouseQuickView().changeBlouseSize(size).clickOnContinueShoppingTab()
+                .clickOnPrintedDressQuickView().viewBasketAndConfirm().clickOnCheckOutTab()
+        .clickOnProceedToCheckOutTab().clickOnAddressPageProceedToCheckOut().clickOnShippingPageProceedToCheckOut()
+        .clickOnPayByWire().clickOnIConfirmOrder().confirmOrderMessage();
+
 
 
     }

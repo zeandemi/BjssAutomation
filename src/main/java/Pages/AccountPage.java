@@ -22,7 +22,7 @@ public class AccountPage {
         this.driver = driver;
     }
 
-    public HomePage clickOnReturnToHomeButtom() {
+    public HomePage clickOnReturnToHomeButton() {
         homeElement.click();
         return new HomePage(driver);
     }
