@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 public class HomePage {
 
     private final WebDriver driver;
+    private static Actions action;
     @FindBy(how = How.CLASS_NAME, using = "login")
     WebElement signIn;
     @FindBy(how = How.XPATH, using = "//*[@id=\"layer_cart\"]/div[1]/div[1]/span")
@@ -33,12 +34,12 @@ public class HomePage {
     WebElement iFrameElement;
     @FindBy(how = How.XPATH, using = "//*[@id=\"group_1\"]")
     WebElement sizeDropDown;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"add_to_cart\"]/button")//*[@id="add_to_cart"]/button/span  //*[@id="add_to_cart"]/button/span
-            WebElement addToBasket;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"add_to_cart\"]/button")
+    WebElement addToBasket;
     @FindBy(how = How.XPATH, using = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span/span")
     WebElement continueShoppingElement;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"layer_cart\"]/div[1]/div[1]/h2")//*[@id="layer_cart"]/div[1]/div[2]/h2/span[2]   //*[@id="layer_cart"]/div[1]/div[1]/h2
-            WebElement successfulMessage;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"layer_cart\"]/div[1]/div[1]/h2")
+    WebElement successfulMessage;
     @FindBy(how = How.XPATH, using = "//*[@id=\"header\"]/div[3]/div/div/div[3]/div/div/div/div/dl/dt[1]/div/div[2]/a")
     WebElement firstItemSizeAndColour;
     @FindBy(how = How.XPATH, using = "//*[@id=\"header\"]/div[3]/div/div/div[3]/div/div/div/div/dl/dt[1]/div/span")
@@ -66,7 +67,6 @@ public class HomePage {
     String tAmount;
     Double expectedTotalOfItem;
     JavascriptExecutor js;
-    Actions action;
     AuthenticationPage authenticationPage;
     Select select;
 
@@ -83,6 +83,11 @@ public class HomePage {
         return this;
     }
 
+    public AccountPage logInAndViewPreviousItems(String username, String password) throws InterruptedException {
+        authenticationPage = clickSignIn();
+        authenticationPage.verifyAuthenticationPageTitle().signIn(username, password).verifyAccountPageTitle();
+        return new AccountPage(driver);
+    }
 
     private AuthenticationPage clickSignIn() {
         signIn.click();
@@ -183,7 +188,7 @@ public class HomePage {
 
     }
 
-    private String stringUtil(String s){
+    private String stringUtil(String s) {
         StringBuilder sb = new StringBuilder(s);
         String s1 = sb.deleteCharAt(0).toString();
         return s1;
@@ -196,8 +201,8 @@ public class HomePage {
 
         double actualTotalIncludingShipping = Double.valueOf(tAmount);
         double expectedTotalAmount = Double.valueOf(aTotalAmount);
-       double diff = 0.00;
-       Assert.assertEquals(expectedTotalAmount, actualTotalIncludingShipping, diff);
+        double diff = 0.00;
+        Assert.assertEquals(expectedTotalAmount, actualTotalIncludingShipping, diff);
     }
 
     private void totalOfItems() {
@@ -205,9 +210,9 @@ public class HomePage {
         String aSecondItemAmount = stringUtil(actualSecondItemAmount);
         String tAmount = stringUtil(totalAmount.getText());
         expectedTotalOfItem = Double.valueOf(aFirstItemAmount) + Double.valueOf(aSecondItemAmount);
-        Double actualTotalOfItem =  Double.valueOf(tAmount);
+        Double actualTotalOfItem = Double.valueOf(tAmount);
         Double difference = actualTotalOfItem - expectedTotalOfItem;
-        Assert.assertEquals(expectedTotalOfItem,actualTotalOfItem,difference);
+        Assert.assertEquals(expectedTotalOfItem, actualTotalOfItem, difference);
     }
 
     private void viewBasket() throws InterruptedException {
