@@ -13,13 +13,14 @@
             <class name="PageTests.HomePageTest">
                 <methods>
                     <include name="purchase2Items"/>
-                </methods>
-            </class>
-            <class name="PageTests.HomePageTest">
-                <methods>
                     <include name="reviewPreviousItemAndAddMessage"/>
                 </methods>
             </class>
+            <!--class name="PageTests.HomePageTest">
+                <methods>
+                    <include name="reviewPreviousItemAndAddMessage"/>
+                </methods>
+            </class-->
         </classes>
     </test>
     <test name="unhappy-Path">
@@ -37,4 +38,14 @@
             </class>
         </classes>
     </test>
+    <test name="apiTests">
+        <packages>
+            <package name="ApiTests"/>
+        </packages>
+        <classes>
+            <class name="ApiTests.CRUDTest">
+            </class>
+        </classes>
+    </test>
 </suite>
+
