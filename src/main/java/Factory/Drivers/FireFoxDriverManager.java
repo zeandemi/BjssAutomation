@@ -1,6 +1,5 @@
 package Factory.Drivers;
 
-import Factory.Drivers.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 

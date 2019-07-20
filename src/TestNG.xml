@@ -16,11 +16,6 @@
                     <include name="reviewPreviousItemAndAddMessage"/>
                 </methods>
             </class>
-            <!--class name="PageTests.HomePageTest">
-                <methods>
-                    <include name="reviewPreviousItemAndAddMessage"/>
-                </methods>
-            </class-->
         </classes>
     </test>
     <test name="unhappy-Path">

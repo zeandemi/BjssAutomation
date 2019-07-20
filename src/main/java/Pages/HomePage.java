@@ -1,6 +1,6 @@
 package Pages;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.AssertJUnit;
 
 public class HomePage {
 
@@ -117,7 +118,7 @@ public class HomePage {
     private void verifySuccessfulCartMessage() {
         String expectedMessage = "Product successfully added to your shopping cart";
         String actualMessage = successfulMessage.getText();
-        Assert.assertEquals(expectedMessage, actualMessage);
+        AssertJUnit.assertEquals(expectedMessage, actualMessage);
     }
 
     public HomePage changeBlouseSize(String size) throws InterruptedException {
@@ -179,10 +180,10 @@ public class HomePage {
         actualSecondItemAmount = secondItemAmount.getText();
 
         Thread.sleep(2000);
-        Assert.assertEquals(expectedFirstItem, actualFirstItem);
-        Assert.assertEquals(expectedSecondItem, actualSecondItem);
-        Assert.assertEquals(expectedFirstItemAmount, actualFirstItemAmount);
-        Assert.assertEquals(expectedSecondItemAmount, actualSecondItemAmount);
+        AssertJUnit.assertEquals(expectedFirstItem, actualFirstItem);
+        AssertJUnit.assertEquals(expectedSecondItem, actualSecondItem);
+        AssertJUnit.assertEquals(expectedFirstItemAmount, actualFirstItemAmount);
+        AssertJUnit.assertEquals(expectedSecondItemAmount, actualSecondItemAmount);
         totalOfItemsPlusShipping();
         totalOfItems();
 
@@ -202,7 +203,7 @@ public class HomePage {
         double actualTotalIncludingShipping = Double.valueOf(tAmount);
         double expectedTotalAmount = Double.valueOf(aTotalAmount);
         double diff = 0.00;
-        Assert.assertEquals(expectedTotalAmount, actualTotalIncludingShipping, diff);
+        AssertJUnit.assertEquals(expectedTotalAmount, actualTotalIncludingShipping, diff);
     }
 
     private void totalOfItems() {
@@ -212,7 +213,7 @@ public class HomePage {
         expectedTotalOfItem = Double.valueOf(aFirstItemAmount) + Double.valueOf(aSecondItemAmount);
         Double actualTotalOfItem = Double.valueOf(tAmount);
         Double difference = actualTotalOfItem - expectedTotalOfItem;
-        Assert.assertEquals(expectedTotalOfItem, actualTotalOfItem, difference);
+        AssertJUnit.assertEquals(expectedTotalOfItem, actualTotalOfItem, difference);
     }
 
     private void viewBasket() throws InterruptedException {

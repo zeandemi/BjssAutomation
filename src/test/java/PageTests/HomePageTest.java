@@ -2,13 +2,14 @@ package PageTests;
 
 import Pages.HomePage;
 import Utility.CaptureResult;
-import io.restassured.RestAssured;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.text.ParseException;
 
 public class HomePageTest extends BaseTest {
     WebDriver driver;
@@ -28,7 +29,7 @@ public class HomePageTest extends BaseTest {
 
     @Test(priority = 2)
     @Parameters({"username", "password"})
-    public void reviewPreviousItemAndAddMessage(String username, String password) throws InterruptedException {
+    public void reviewPreviousItemAndAddMessage(String username, String password) throws InterruptedException, ParseException {
         driver = getDriver();
         homePage = new HomePage(driver);
         Assert.assertEquals(driver.getTitle(), "Login - My Store");

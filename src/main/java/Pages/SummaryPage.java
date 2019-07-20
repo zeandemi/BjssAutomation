@@ -1,12 +1,12 @@
 package Pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.AssertJUnit;
 
 public class SummaryPage {
     private final WebDriver driver;
@@ -26,7 +26,7 @@ public class SummaryPage {
     private SummaryPage verifySummaryPage() {
         String expectedMessage = "Bank-wire payment.";
         String actualMessage = summaryPageMessage.getText();
-        Assert.assertEquals(expectedMessage, actualMessage);
+        AssertJUnit.assertEquals(expectedMessage, actualMessage);
         return this;
     }
 

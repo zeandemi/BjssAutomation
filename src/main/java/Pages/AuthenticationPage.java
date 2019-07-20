@@ -1,11 +1,12 @@
 package Pages;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.AssertJUnit;
 
 public class AuthenticationPage {
 
@@ -39,7 +40,7 @@ public class AuthenticationPage {
     public AuthenticationPage verifyAuthenticationPageTitle() {
         String actualMessage = authPageElement.getText();
         String expectedMessage = "AUTHENTICATION";
-        Assert.assertEquals(actualMessage,expectedMessage);
+        AssertJUnit.assertEquals(actualMessage,expectedMessage);
         return new AuthenticationPage(driver);
     }
 }

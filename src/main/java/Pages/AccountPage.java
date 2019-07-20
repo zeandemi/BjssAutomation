@@ -1,6 +1,5 @@
 package Pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,8 +7,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.AssertJUnit;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AccountPage {
@@ -35,6 +37,7 @@ public class AccountPage {
     WebElement savedMessage;
     @FindBy(how = How.XPATH, using = "//*[@id=\"header\"]/div[2]/div/div/nav/div[2]/a")
     WebElement logOutTab;
+    Date today;
     Date date;
 
     public AccountPage(WebDriver driver) {
@@ -51,7 +54,7 @@ public class AccountPage {
         Thread.sleep(2000);
         String actualMessage = myAccountPageElement.getText();
         String expectedMessage = "MY ACCOUNT";
-        Assert.assertEquals(actualMessage, expectedMessage);
+        AssertJUnit.assertEquals(actualMessage, expectedMessage);
         return new AccountPage(driver);
     }
 
@@ -62,21 +65,21 @@ public class AccountPage {
 
     public AccountPage verifyOrderDate() throws InterruptedException {
         Thread.sleep(2000);
-        date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("MM/DD/yyyy");
-        String currentDate = String.valueOf(dateFormat.format(date));
+        today = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String currentDate = String.valueOf(dateFormat.format(today));
         String orderDate = orderedDate.getText();
-        Assert.assertEquals(currentDate, orderDate);
+        AssertJUnit.assertEquals(currentDate, orderDate);
         return this;
     }
 
     public AccountPage verifyOrderDateFailScenario() throws InterruptedException {
         Thread.sleep(2000);
-        date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("DD/MM/yyyy");
-        String currentDate = String.valueOf(dateFormat.format(date));
+        today = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String currentDate = String.valueOf(dateFormat.format(today));
         String orderDate = orderedDate.getText();
-        Assert.assertEquals(currentDate, orderDate);
+        AssertJUnit.assertEquals(currentDate, orderDate);
         return this;
     }
 
@@ -89,7 +92,7 @@ public class AccountPage {
         addMessageTextBox.sendKeys(message);
         sendTab.click();
         Thread.sleep(2000);
-        Assert.assertEquals(savedMessage.getText(), message);
+        AssertJUnit.assertEquals(savedMessage.getText(), message);
         return this;
     }
 

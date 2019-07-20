@@ -6,6 +6,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
+import java.net.MalformedURLException;
+
 public abstract class BaseTest {
 
     BrowserSetUp browserSetUp = new BrowserSetUp();
@@ -13,7 +15,7 @@ public abstract class BaseTest {
 
     @BeforeTest
     @Parameters({"appType"})
-    public void startBrowser(String appType){
+    public void startBrowser(String appType) throws MalformedURLException {
         driver = browserSetUp.startBrowser(appType);
     }
 

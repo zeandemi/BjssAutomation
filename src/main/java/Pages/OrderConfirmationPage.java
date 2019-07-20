@@ -1,11 +1,11 @@
 package Pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.AssertJUnit;
 
 public class OrderConfirmationPage {
 
@@ -23,7 +23,7 @@ public class OrderConfirmationPage {
     public OrderConfirmationPage confirmOrderMessage() throws InterruptedException {
         String expectedMessage = "Your order on My Store is complete.";
         String actualMessage = confirmationMessage.getText();
-        Assert.assertEquals(expectedMessage,actualMessage);
+        AssertJUnit.assertEquals(expectedMessage,actualMessage);
         return this;
     }
 

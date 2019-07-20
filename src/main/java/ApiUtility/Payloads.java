@@ -4,7 +4,6 @@ import io.restassured.path.json.JsonPath;
 
 public class Payloads {
     private static JsonPath jsonPath;
-     //static PayLoadDoc payLoadDoc;
 
     public static String createPayload = "{\n" +
             "    \"name\": \"morpheus\",\n" +
@@ -15,23 +14,23 @@ public class Payloads {
             "    \"job\": \"zion residents\"\n" +
             "}";
 
-    public static void jsonResponse(String response ){
+    public static void jsonResponse(String response) {
         jsonPath = new JsonPath(response);
-         PayLoadDoc.responseName = jsonPath.getString("name");
-         PayLoadDoc.responseJob = jsonPath.getString("job");
+        PayLoadDoc.responseName = jsonPath.getString("name");
+        PayLoadDoc.responseJob = jsonPath.getString("job");
         PayLoadDoc.responseId = jsonPath.getString("id");
         PayLoadDoc.responseCreatedAt = jsonPath.getString("createdAt");
 
     }
 
-    public static String jsonPatchResponse(String rawToString,String parameter) {
+    public static String jsonPatchResponse(String rawToString, String parameter) {
         jsonPath = new JsonPath(rawToString);
         String result = jsonPath.getString(parameter);
         System.out.println(result);
         return result;
     }
 
-    public static String stringToJsonResponse(String response){
+    public static String stringToJsonResponse(String response) {
         jsonPath = new JsonPath(response);
         String id = jsonPath.getString("data.id");
         return id;
