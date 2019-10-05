@@ -1,5 +1,6 @@
 package Pages;
 
+import Utility.Wait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,7 @@ public class ShoppingCartSummaryPage {
 
     public ShoppingCartSummaryPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
+        Wait.untilPageLoadComplete(driver);
         this.driver = driver;
     }
 
@@ -30,6 +32,7 @@ public class ShoppingCartSummaryPage {
         action = new Actions(driver);
         action.moveToElement(proceedTab);
         proceedTab.click();
+        Wait.untilJqueryIsDone(driver);
         Thread.sleep(2000);
         return getAddressPAge();
     }

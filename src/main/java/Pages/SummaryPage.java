@@ -1,5 +1,6 @@
 package Pages;
 
+import Utility.Wait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,7 @@ public class SummaryPage {
 
     public SummaryPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        Wait.untilPageLoadComplete(driver);
         this.driver = driver;
     }
 
@@ -39,6 +41,7 @@ public class SummaryPage {
     public OrderConfirmationPage clickOnIConfirmOrder() throws InterruptedException {
         verifySummaryPage().scrollToView(otherPaymentMethods);
         confirmOrder.click();
+        Wait.untilJqueryIsDone(driver);
         return new OrderConfirmationPage(driver);
 
     }

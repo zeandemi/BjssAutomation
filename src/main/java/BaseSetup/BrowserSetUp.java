@@ -12,9 +12,9 @@ public class BrowserSetUp {
     private DriverFactoryManager driverFactoryManager;
     private String appUrl = "http://automationpractice.com/";
 
-    public WebDriver startBrowser(String appType){
+    public WebDriver startBrowser(String driverType){
         driverFactoryManager = new DriverFactoryManager();
-        driverFactoryManager.initDriver(appType);
+        driverFactoryManager.initDriver(driverType);
         driver = driverFactoryManager.getDriver();
         driver.navigate().to(appUrl);
         driver.manage().window().fullscreen();
@@ -23,5 +23,6 @@ public class BrowserSetUp {
 
     public void closeBrowser(){
         driver.quit();
+
     }
 }

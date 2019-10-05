@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test name="Happy-Path">
-        <parameter name="appType" value="Chrome"/>
+        <parameter name="driverType" value="Chrome"/>
         <parameter name="username" value="abc123@yahoo.com"/>
         <parameter name="password" value="BJSSTest"/>
         <parameter name="size" value="M"/>
@@ -19,7 +19,7 @@
         </classes>
     </test>
     <test name="unhappy-Path">
-        <parameter name="appType" value="Chrome"/>
+        <parameter name="driverType" value="Chrome"/>
         <parameter name="username" value="abc123@yahoo.com"/>
         <parameter name="password" value="BJSSTest"/>
         <packages>

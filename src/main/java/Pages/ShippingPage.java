@@ -1,5 +1,6 @@
 package Pages;
 
+import Utility.Wait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,7 @@ public class ShippingPage {
 
     public ShippingPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
+        Wait.untilPageLoadComplete(driver);
         this.driver = driver;
     }
 
@@ -31,6 +33,7 @@ public class ShippingPage {
         tickTermsAndConditions();
         action.moveToElement(proceedTab);
         proceedTab .click();
+        Wait.untilJqueryIsDone(driver);
         Thread.sleep(2000);
         return new PaymentPage(driver);
     }
@@ -45,5 +48,6 @@ public class ShippingPage {
 
     private void tickTermsAndConditions(){
         checkBox.click();
+        Wait.untilJqueryIsDone(driver);
     }
 }

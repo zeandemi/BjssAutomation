@@ -1,5 +1,6 @@
 package Pages;
 
+import Utility.Wait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,10 +44,12 @@ public class AccountPage {
     public AccountPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
+        Wait.untilPageLoadComplete(driver);
     }
 
     public HomePage clickOnReturnToHomeButton() {
         homeElement.click();
+        Wait.untilJqueryIsDone(driver);
         return new HomePage(driver);
     }
 
@@ -60,6 +63,7 @@ public class AccountPage {
 
     public AccountPage clickOrderItemHistory() {
         orderHistoryTab.click();
+        Wait.untilPageLoadComplete(driver);
         return this;
     }
 
@@ -91,6 +95,7 @@ public class AccountPage {
         Thread.sleep(1000);
         addMessageTextBox.sendKeys(message);
         sendTab.click();
+        Wait.untilJqueryIsDone(driver);
         Thread.sleep(2000);
         AssertJUnit.assertEquals(savedMessage.getText(), message);
         return this;
@@ -104,6 +109,7 @@ public class AccountPage {
 
     public AuthenticationPage logOut() {
         logOutTab.click();
+        Wait.untilJqueryIsDone(driver);
         return new AuthenticationPage(driver);
     }
 

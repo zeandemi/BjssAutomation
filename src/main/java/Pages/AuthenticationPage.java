@@ -1,6 +1,7 @@
 package Pages;
 
 
+import Utility.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,7 @@ public class AuthenticationPage {
     public AuthenticationPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
+        Wait.untilPageLoadComplete(driver);
     }
 
     public AccountPage signIn(String emailAddress, String password) throws InterruptedException {
@@ -34,6 +36,7 @@ public class AuthenticationPage {
         emailAddressElement.sendKeys(emailAddress);
         passwordElement.sendKeys(password);
         submitElement.click();
+        Wait.untilJqueryIsDone(driver);
         return new AccountPage(driver);
     }
 

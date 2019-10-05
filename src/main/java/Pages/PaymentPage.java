@@ -1,5 +1,6 @@
 package Pages;
 
+import Utility.Wait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ public class PaymentPage {
 
     public PaymentPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
+        Wait.untilPageLoadComplete(driver);
         this.driver = driver;
     }
 
@@ -27,6 +29,7 @@ public class PaymentPage {
     public SummaryPage clickOnPayByWire() throws InterruptedException {
         scrollToView(payByBankWire);
         payByBankWire.click();
+        Wait.untilJqueryIsDone(driver);
         return new SummaryPage(driver);
     }
 

@@ -14,9 +14,9 @@ public abstract class BaseTest {
     public  static WebDriver driver;
 
     @BeforeTest
-    @Parameters({"appType"})
-    public void startBrowser(String appType) throws MalformedURLException {
-        driver = browserSetUp.startBrowser(appType);
+    @Parameters({"driverType"})
+    public void startBrowser(String driverType) throws MalformedURLException {
+        driver = browserSetUp.startBrowser(driverType);
     }
 
     @AfterTest

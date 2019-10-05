@@ -1,6 +1,7 @@
 package Pages;
 
 
+import Utility.Wait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -76,6 +77,7 @@ public class HomePage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
         action = new Actions(driver);
+        Wait.untilPageLoadComplete(driver);
     }
 
     public HomePage logIn(String username, String password) throws InterruptedException {
@@ -92,6 +94,7 @@ public class HomePage {
 
     private AuthenticationPage clickSignIn() {
         signIn.click();
+        Wait.untilJqueryIsDone(driver);
         return new AuthenticationPage(driver);
     }
 
@@ -106,6 +109,7 @@ public class HomePage {
         try {
             if (blouseQuickImage.isDisplayed() && blouseQuickImage.isEnabled()) {
                 blouseQuickImage.click();
+                Wait.untilJqueryIsDone(driver);
                 Thread.sleep(2000);
             }
         } catch (Exception e) {
@@ -132,12 +136,14 @@ public class HomePage {
 
     public HomePage clickOnContinueShoppingTab() {
         continueShoppingElement.click();
+        Wait.untilJqueryIsDone(driver);
         return this;
     }
 
     public void addItemToBasket() throws InterruptedException {
         action.moveToElement(addToBasket);
         addToBasket.click();
+        Wait.untilJqueryIsDone(driver);
         Thread.sleep(2000);
         driver.switchTo().defaultContent();
         Thread.sleep(2000);
@@ -156,6 +162,7 @@ public class HomePage {
         try {
             if (printedDressQuickImage.isDisplayed() && printedDressQuickImage.isEnabled()) {
                 printedDressQuickImage.click();
+                Wait.untilJqueryIsDone(driver);
                 Thread.sleep(2000);
             }
         } catch (Exception e) {
@@ -227,11 +234,13 @@ public class HomePage {
 
     private void closeCartViewMessage() throws InterruptedException {
         closeCartView.click();
+        Wait.untilJqueryIsDone(driver);
         Thread.sleep(2000);
     }
 
     public ShoppingCartSummaryPage clickOnCheckOutTab() {
         checkOut.click();
+        Wait.untilJqueryIsDone(driver);
         return new ShoppingCartSummaryPage(driver);
     }
 

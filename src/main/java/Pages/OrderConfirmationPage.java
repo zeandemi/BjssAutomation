@@ -1,5 +1,6 @@
 package Pages;
 
+import Utility.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,7 @@ public class OrderConfirmationPage {
 
     public OrderConfirmationPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
+        Wait.untilPageLoadComplete(driver);
         this.driver = driver;
     }
 
@@ -29,6 +31,7 @@ public class OrderConfirmationPage {
 
     public AuthenticationPage logOut() throws InterruptedException {
         logOutTab.click();
+        Wait.untilJqueryIsDone(driver);
         Thread.sleep(200);
         return new AuthenticationPage(driver);
     }

@@ -1,8 +1,8 @@
 package Factory;
 
-import Factory.Drivers.ChromeDriverManager;
-import Factory.Drivers.DriverManager;
-import Factory.Drivers.FireFoxDriverManager;
+import Factory.DriversManager.ChromeDriverManager;
+import Factory.DriversManager.DriverManager;
+import Factory.DriversManager.FireFoxDriverManager;
 import org.openqa.selenium.WebDriver;
 
 public class DriverFactoryManager {
