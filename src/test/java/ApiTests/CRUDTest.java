@@ -23,7 +23,7 @@ public class CRUDTest {
 
     @Test(priority = 1)
     public void createApi() {
-        Response rs = given().body(Payloads.createPayload).when().post("/api/users").then().assertThat().statusCode(201)
+        Response rs = given().body(Payloads.createPayload).when().post("/api/users/2").then().assertThat().statusCode(201)
                 .and().contentType(ContentType.JSON).extract().response();
         String rawToString = rs.asString();
         Payloads.jsonResponse(rawToString);

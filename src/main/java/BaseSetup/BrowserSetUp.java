@@ -12,7 +12,7 @@ public class BrowserSetUp {
     private DriverFactoryManager driverFactoryManager;
     private String appUrl = "http://automationpractice.com/";
 
-    public WebDriver startBrowser(String driverType){
+    public WebDriver startBrowser(String driverType) throws MalformedURLException {
         driverFactoryManager = new DriverFactoryManager();
         driverFactoryManager.initDriver(driverType);
         driver = driverFactoryManager.getDriver();
@@ -23,6 +23,5 @@ public class BrowserSetUp {
 
     public void closeBrowser(){
         driver.quit();
-
     }
 }

@@ -2,19 +2,30 @@ package Factory.DriversManager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class ChromeDriverManager implements DriverManager {
 
+    private final String remoteUrl;
     WebDriver driver;
-    private String driverPath = "C:\\Users\\oades\\proj\\BjssAutomation\\drivers\\";
+
+    public ChromeDriverManager(String remoteUrl) {
+        this.remoteUrl = remoteUrl;
+    }
+
 
     public WebDriver getDriver() {
         return driver;
     }
 
-    public void setDriver() {
-        System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+    public void setDriver() throws MalformedURLException {
+        URL url = new URL(remoteUrl);
+        DesiredCapabilities cap = DesiredCapabilities.chrome();
+        RemoteWebDriver driver = new RemoteWebDriver(url,cap);
         this.driver = driver;
     }
 }

@@ -83,7 +83,7 @@ public class AccountPage {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String currentDate = String.valueOf(dateFormat.format(today));
         String orderDate = orderedDate.getText();
-        AssertJUnit.assertEquals(currentDate, orderDate);
+        AssertJUnit.assertNotSame(currentDate, orderDate);
         return this;
     }
 
